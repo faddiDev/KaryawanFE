@@ -59,6 +59,8 @@
                             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                         </table>
+                        <br />
+                        <button (click)="prev()"><</button> {{page}} of {{ math.ceil(count/5) }} <button (click)="next()">></button>
                     </div>
                 </td>
             </tr>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { EmployeeJoin } from './Employee';
+import { EmployeeAll } from './Employee';
 import { EmployeeDto } from './EmployeeDto';
 import { Observable } from 'rxjs';
 
@@ -13,8 +13,8 @@ export class KaryawanindexService {
 
   constructor(private http: HttpClient) { }
 
-  getEmployees(): Observable<EmployeeJoin[]> {
-    return this.http.get<EmployeeJoin[]>(this.url, {});
+  getEmployees(employee: EmployeeAll): Observable<EmployeeAll> {
+    return this.http.post<EmployeeAll>(this.url, employee);
   }
 
   deleteEmployee(employeeDto: EmployeeDto): Observable<EmployeeDto> {

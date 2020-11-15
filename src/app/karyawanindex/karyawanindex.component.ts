@@ -1,14 +1,11 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { MatPaginator}  from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { EmployeeJoin } from '../Employee';
+import { EmployeeAll } from '../Employee';
 import { EmployeeDto } from '../EmployeeDto';
 import { KaryawanindexService } from '../karyawanindex.service';
 import { KaryawaneditaddService } from '../karyawaneditadd.service';
-import { map } from 'rxjs/operators';
-import { getLocaleDateFormat } from '@angular/common';
 
 @Component({
   selector: 'app-karyawanindex',
@@ -22,8 +19,11 @@ export class KaryawanindexComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['id', 'name', 'birthDate', 'positionId', 'idNumber', 'gender', 'Aksi'];
 
-  employee: EmployeeJoin;
+  employee: EmployeeAll;
   dataSource: any;
+  page: number = 1;
+  count: number = 1;
+  math = Math;
 
   constructor(private karyawanindexService: KaryawanindexService, 
     private router: Router, 
@@ -37,8 +37,14 @@ export class KaryawanindexComponent implements OnInit, AfterViewInit {
   }
 
   getEmployeeData() {
-    this.karyawanindexService.getEmployees().subscribe(data => {
-      this.dataSource = new MatTableDataSource<EmployeeJoin>(data);
+    this.employee = {
+      employeeDto : null,
+      page: this.page,
+      count: 0
+    }
+    this.karyawanindexService.getEmployees(this.employee).subscribe(data => {
+      this.count = data.count;
+      this.dataSource = new MatTableDataSource<any>(data.employeeDto);
       this.dataSource.sort = this.sort;
     });
   }
@@ -76,5 +82,16 @@ export class KaryawanindexComponent implements OnInit, AfterViewInit {
       setTimeout(function() {
       },2000);
     }
+  }
+
+  prev() {
+    this.page -= 1;
+    if(this.page == 0) this.page=1; 
+    this.getEmployeeData();
+  }
+
+  next() {
+    if(this.page < Math.ceil(this.count/5)) this.page += 1;
+    this.getEmployeeData();
   }
 }

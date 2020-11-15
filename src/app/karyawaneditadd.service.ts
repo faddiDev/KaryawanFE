@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs';
-import { EmployeeJoin } from './Employee';
+import { EmployeeAll } from './Employee';
 import { EmployeeDto } from './EmployeeDto';
 import { Position } from './Position';
 
@@ -22,8 +22,8 @@ export class KaryawaneditaddService {
     return this.http.get<Position>(this.urlPosition, {});
   }
 
-  getEmployeeById(id: number): Observable<EmployeeJoin> {
-    return this.http.get<EmployeeJoin>("http://localhost:8080/KaryawanBO/employee/"+id, {});
+  getEmployeeById(id: number): Observable<EmployeeAll> {
+    return this.http.get<EmployeeAll>("http://localhost:8080/KaryawanBO/employee/"+id, {});
   }
 
   insertEmployee(employeeDto: EmployeeDto): Observable<EmployeeDto> {
@@ -34,7 +34,7 @@ export class KaryawaneditaddService {
     return this.http.post<EmployeeDto>("http://localhost:8080/KaryawanBO/update", employeeDto);
   }
 
-  changeEmployee(employee: EmployeeJoin) {
+  changeEmployee(employee: EmployeeAll) {
     this.messageSource.next(employee);
   }
 }

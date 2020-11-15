@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { KaryawaneditaddService } from './karyawaneditadd.service';
-import { EmployeeJoin } from './Employee';
+import { EmployeeAll } from './Employee';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import { EmployeeJoin } from './Employee';
 export class AppComponent {
   //title = 'KaryawanFE';
 
-  employee: EmployeeJoin;
+  employee: EmployeeAll;
 
   constructor(private karyawaneditaddService: KaryawaneditaddService) {}
 

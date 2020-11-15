@@ -1,0 +1,39 @@
+* {
+    font-size: 17px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+#body {
+    width: 1300px;
+    margin: 40px;
+}
+#container {
+    width: 1000px;
+    margin: auto;
+}
+h1 {
+    text-align: center;
+}
+#main_table tr td{
+    width:1000px;
+    padding: 10px;
+}
+#table_content {
+    text-align: center;
+}
+.button-action {
+    border: none;
+    background-color: #FFF;
+}
+#add {
+    text-decoration: none;
+    padding: 3px;
+    color: black;
+    border: 1px solid grey;
+    box-shadow: 3px 3px #000000;
+    background-color: #F5D8D8;
+    width: 80px;
+    height: 35px;
+}
+#span_td {
+    height: 20px;
+}

@@ -1,0 +1,63 @@
+<div id="body">
+    <div id="container">
+        <h1>MASTER KARYAWAN</h1>
+        <table id="main_table" border="3">
+            <tr>
+                <td>Edit Data Karyawan</td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="table_content">
+                        <form novalidate (ngSubmit)="onSubmit(form)" [formGroup]="form">
+                            <table>
+                                <tr>
+                                    <td>Nama</td>
+                                    <td>
+                                        <input type="text" formControlName="id" hidden />
+                                        <input type="text" formControlName="name" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Tanggal Lahir</td>
+                                    <td>
+                                        <input type="date" formControlName="birthDate" style="width:250px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Jabatan</td>
+                                    <td>
+                                        <select name="jabatan" style="width:250px;" formControlName="positionId">
+                                            <option *ngFor="let positions of position"
+                                                    [ngValue]="positions.id">
+                                                {{positions.name}}
+                                            </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>NIP</td>
+                                    <td><input type="text" formControlName="idNumber" (keypress)="numberOnly($event)" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Jenis Kelamin</td>
+                                    <td>
+                                        <input type="radio" value="Pria" formControlName="gender" > Pria
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" value="Wanita" formControlName="gender" > Wanita
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:right;"><button routerLink="/promise/karyawanindex" class="add">Kembali</button></td>
+                                    <td><button type="submit" class="add">Simpan</button></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td id="span_td"></td>
+            </tr>
+        </table>
+    </div>
+</div>
